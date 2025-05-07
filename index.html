@@ -14,11 +14,24 @@
     h1 {
       text-align: center;
     }
-    .search-bar {
+    .search-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .search-icon {
+      font-size: 24px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .search-input {
+      display: none;
+      margin-top: 10px;
+    }
+    .search-input input {
       width: 90%;
       max-width: 400px;
-      margin: 0 auto 20px auto;
-      display: block;
       padding: 10px;
       font-size: 16px;
       border: 1px solid #ccc;
@@ -51,10 +64,30 @@
       text-decoration: none;
     }
   </style>
+  <script>
+    function toggleSearch() {
+      const inputContainer = document.getElementById("search-input");
+      inputContainer.style.display = inputContainer.style.display === "block" ? "none" : "block";
+    }
+
+    function filterListings() {
+      const input = document.getElementById("filter").value.toLowerCase();
+      const cards = document.getElementsByClassName("card");
+      Array.from(cards).forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(input) ? "block" : "none";
+      });
+    }
+  </script>
 </head>
 <body>
   <h1>KSS Recon Inventory</h1>
-  <input type="text" class="search-bar" placeholder="Search by model, year..." />
+  <div class="search-container">
+    <span class="search-icon" onclick="toggleSearch()">🔍</span>
+    <div class="search-input" id="search-input">
+      <input type="text" id="filter" onkeyup="filterListings()" placeholder="Search by model, year, price..." />
+    </div>
+  </div>
   <div class="card">
     <h2>2020 Toyota Vellfire 2.5X</h2>
     <p>RM178,000</p>
