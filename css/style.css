@@ -1,0 +1,11 @@
+
+body { font-family: Arial; padding: 20px; margin: 0; }
+h1 { text-align: center; }
+input[type="text"] { width: 100%; padding: 10px; margin-bottom: 20px; }
+.car-card { border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 5px; }
+.gallery img { width: 100%; max-width: 500px; display: block; margin: 10px auto; }
+.btn { background: green; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; display: inline-block; }
+@media (max-width: 600px) {
+  .gallery img { max-width: 100%; }
+  .btn { width: 100%; text-align: center; }
+}
